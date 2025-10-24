@@ -1,12 +1,9 @@
-
 ---
-
 # RFP Data Extraction Project
 
 ## Objective
 
 This project extracts structured information from Request for Proposal (RFP) documents in PDF and HTML formats. Using Language Models and vector search, it parses, interprets, and organizes RFP details into a predefined JSON structure.
-
 ---
 
 ## Features
@@ -146,6 +143,6 @@ output/
 
 ## Author
 
-Jerusha J
+J Jerusha
 
 ---
