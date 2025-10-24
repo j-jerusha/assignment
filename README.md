@@ -48,7 +48,7 @@ The program extracts the following fields:
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/j-jerusha/assignment.git
 cd assignment
 ```
 
