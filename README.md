@@ -1,4 +1,3 @@
-Got it! You want a **README** for your RFP extraction project that explains the objective, setup, dependencies, and usage. I can write a clean, professional one for you based on your code and assignment description. Here's a polished version:
 
 ---
 
