@@ -1,174 +1,152 @@
-# RFP Document Information Extraction System
+Got it! You want a **README** for your RFP extraction project that explains the objective, setup, dependencies, and usage. I can write a clean, professional one for you based on your code and assignment description. Here's a polished version:
 
-A Python-based system that extracts structured information from RFP (Request for Proposals) documents using RAG (Retrieval Augmented Generation) and Google's Gemini LLM.
+---
+
+# RFP Data Extraction Project
+
+## Objective
+
+This project extracts structured information from Request for Proposal (RFP) documents in PDF and HTML formats. Using Language Models and vector search, it parses, interprets, and organizes RFP details into a predefined JSON structure.
+
+---
 
 ## Features
 
-- **Multi-format Support**: Parses PDF and HTML documents
-- **RAG Implementation**: Uses FAISS vector search with sentence transformers for efficient information retrieval
-- **LLM-powered Extraction**: Leverages Google Gemini for intelligent structured data extraction
-- **Structured Output**: Generates JSON files with standardized bid information
+- Supports multiple document formats: PDF and HTML
+- Extracts structured data into JSON
+- Uses LLMs (ChatGroq) with embeddings for context-aware information extraction
+- Automatically handles missing or unspecified fields
+- Saves output per RFP folder
 
-## Architecture
+---
 
-```
-Document → Parse (PDF/HTML) → Chunk Text → Index with FAISS →
-RAG Retrieval → Gemini Extraction → Structured JSON Output
-```
+## Predefined Fields
 
-## Installation
+The program extracts the following fields:
 
-### Prerequisites
+- Bid Number
+- Title
+- Due Date
+- Bid Submission Type
+- Term of Bid
+- Pre Bid Meeting
+- Installation
+- Bid Bond Requirement
+- Delivery Date
+- Payment Terms
+- Any Additional Documentation Required
+- MFG for Registration
+- Contract or Cooperative to use
+- Model_no
+- Part_no
+- Product
+- contact_info (dict: Name, Email, Phone, Address)
+- company_name
+- Bid Summary
+- Product Specification
 
-- Python 3.8 or higher
-- Google API Key for Gemini
+---
 
-### Setup
+## Setup Instructions
 
-1. **Clone or download the project**
-
-2. **Create a virtual environment (recommended)**
+### 1. Clone the repository
 
 ```bash
-python -m venv assignment
-source assignment/bin/activate  # On Windows: assignment\Scripts\activate
+git clone <repository-url>
+cd assignment
 ```
 
-3. **Install dependencies**
+### 2. Create and activate virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+If you’re using **uv**:
+
+```bash
+uv sync
+```
+
+Or using **pip**:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Required packages:
+### 4. Set environment variables
 
-```txt
-google-generativeai>=0.3.0
-sentence-transformers>=2.2.0
-faiss-cpu>=1.7.4
-pdfplumber>=0.10.0
-beautifulsoup4>=4.12.0
-pydantic>=2.0.0
-python-dotenv>=1.0.0
-numpy>=1.24.0
-tqdm>=4.65.0
+Create a `.env` file with the following:
+
+```env
+GROQ_API_KEY=<your_groq_api_key>
 ```
 
-4. **Configure API Key**
-
-Create a `.env` file in the project root:
-
-```bash
-GOOGLE_API_KEY=your_gemini_api_key_here
-```
-
-Or set as environment variable:
-
-```bash
-export GOOGLE_API_KEY="your_gemini_api_key_here"  # Linux/Mac
-set GOOGLE_API_KEY=your_gemini_api_key_here      # Windows
-```
-
-## Project Structure
-
-```
-assignment/
-├── main.py                    # Main execution script
-├── src/
-│   ├── ingest.py             # PDF/HTML parsing
-│   ├── chunk_index.py        # Text chunking and FAISS indexing
-│   ├── extract_gemini.py     # Gemini-based extraction with RAG
-│   ├── schema.py             # Pydantic schema for validation
-│   └── utils.py              # Utility functions
-├── Bid1/                     # Input folder for first bid
-│   ├── *.pdf
-│   └── *.html
-├── Bid2/                     # Input folder for second bid
-│   ├── *.pdf
-│   └── *.html
-├── outputs/                  # Generated JSON outputs
-│   ├── Bid1/
-│   └── Bid2/
-├── .env                      # API keys (not in git)
-├── requirements.txt          # Python dependencies
-└── README.md                # This file
-```
+---
 
 ## Usage
 
-### Basic Usage
+1. Organize RFP documents into folders, e.g.:
 
-Place your RFP documents in `Bid1/` and `Bid2/` folders, then run:
+```
+assignment/
+├─ Bid1/
+│  ├─ document1.pdf
+│  └─ document2.html
+├─ Bid2/
+│  └─ document3.pdf
+```
+
+2. Run the script:
 
 ```bash
 python main.py
 ```
 
-### Expected Input
+3. Extracted JSON files will be saved in the `output/` folder:
 
-Supported file formats:
-
-- PDF files (`.pdf`)
-- HTML files (`.html`, `.htm`)
-
-### Output Format
-
-Each processed document generates a JSON file with the following structure:
-
-```json
-{
-  "bid_number": "JA-207652",
-  "title": "Student and Staff Computing Devices",
-  "due_date": "2024-07-09",
-  "bid_submission_type": "Electronic submission",
-  "term_of_bid": "Contract term details",
-  "pre_bid_meeting": "Meeting details",
-  "installation": "Installation requirements",
-  "bid_bond_requirement": "Bond details",
-  "delivery_date": "Expected delivery date",
-  "payment_terms": "Payment terms and conditions",
-  "additional_documentation_required": "Form 1295; W-9; Insurance proof",
-  "mfg_for_registration": "Manufacturer requirements",
-  "contract_or_cooperative_to_use": "Contract details",
-  "model_no": "Device model number",
-  "part_no": "Part number",
-  "product": "Product description",
-  "contact_info": "Name: John Doe; Email: john@example.com; Phone: 555-1234",
-  "bid_summary": "Brief summary of the bid",
-  "product_specification": "Technical specifications"
-}
+```
+output/
+├─ Bid1_extracted.json
+├─ Bid2_extracted.json
 ```
 
-Fields set to `null` when information is not found in the document.
+---
 
 ## How It Works
 
-### 1. Document Parsing (`ingest.py`)
+1. **Load Documents:** PDFs and HTML files are loaded using `PyPDFLoader` and `UnstructuredHTMLLoader`.
+2. **Vector Store Creation:** Documents are embedded using `HuggingFaceEmbeddings` and stored in FAISS for retrieval.
+3. **Context Retrieval:** Relevant document sections are fetched with a retriever.
+4. **LLM Extraction:** `ChatGroq` generates structured JSON based on the predefined fields.
+5. **JSON Output:** Ensures all fields are present; missing data is marked as `"Not specified"`.
 
-- **PDF**: Uses `pdfplumber` to extract text from all pages
-- **HTML**: Uses `BeautifulSoup` to parse and extract clean text
+---
 
-### 2. Text Chunking & Indexing (`chunk_index.py`)
+## Dependencies
 
-- Splits text into overlapping chunks (400 words, 80-word overlap)
-- Uses `sentence-transformers/all-MiniLM-L6-v2` for embeddings
-- Builds FAISS index for efficient similarity search
-- Returns a retriever function for RAG
+- Python 3.10+
+- `python-dotenv`
+- `langchain_community`
+- `langchain_huggingface`
+- `langchain_groq`
+- `FAISS` (CPU version recommended)
 
-### 3. RAG-based Extraction (`extract_gemini.py`)
+---
 
-- Retrieves relevant chunks using targeted queries
-- Combines context for comprehensive coverage
-- Sends context to Gemini with structured prompt
-- Parses and validates JSON output
+## Notes
 
-### 4. Schema Validation (`schema.py`)
+- The system handles missing fields gracefully.
+- Ensure API keys (GROQ) are correctly set in `.env`.
+- Can be extended to additional document formats with minimal changes.
 
-- Pydantic models ensure data consistency
-- Automatic type conversion (dict/list → string)
-- Handles missing or malf
-# assignment
-# assignment
-# assignment
-# assignment
-# assignment
+---
+
+## Author
+
+Jerusha J
+
+---
