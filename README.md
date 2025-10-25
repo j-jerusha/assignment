@@ -3,8 +3,7 @@
 
 ## Objective
 
-This project extracts structured information from Request for Proposal (RFP) documents in PDF and HTML formats. Using Language Models and vector search, it parses, interprets, and organizes RFP details into a predefined JSON structure.
----
+## This project extracts structured information from Request for Proposal (RFP) documents in PDF and HTML formats. Using Language Models and vector search, it parses, interprets, and organizes RFP details into a predefined JSON structure.
 
 ## Features
 
@@ -13,7 +12,6 @@ This project extracts structured information from Request for Proposal (RFP) doc
 - Uses LLMs (ChatGroq) with embeddings for context-aware information extraction
 - Automatically handles missing or unspecified fields
 - Saves output per RFP folder
-
 ---
 
 ## Predefined Fields
@@ -54,10 +52,21 @@ cd assignment
 
 ### 2. Create and activate virtual environment
 
+#### For macOS / Linux
+
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 ```
+
+#### For Windows
+
+```bash
+python3 -m venv .venv
+.venv\Scripts\activate
+```
+
+---
 
 ### 3. Install dependencies
 
@@ -79,6 +88,7 @@ Create a `.env` file with the following:
 
 ```env
 GROQ_API_KEY=<your_groq_api_key>
+HF_TOKEN=<HF_access_token>
 ```
 
 ---
