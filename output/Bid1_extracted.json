@@ -1,6 +1,6 @@
 {
   "Bid Number": "168884",
-  "Title": "JA-207652 Student and Staff Computing Devices",
+  "Title": "Student and Staff Computing Devices",
   "Due Date": "July 9, 2024 at 2:00 PM CST",
   "Bid Submission Type": "Not specified",
   "Term of Bid": "3 years with two 1-year extensions",
@@ -9,7 +9,7 @@
   "Bid Bond Requirement": "Not specified",
   "Delivery Date": "September 2024",
   "Payment Terms": "Not specified",
-  "Any Additional Documentation Required": "M/WBE compliance plan, Letter of Intent for M/WBE subcontractors",
+  "Any Additional Documentation Required": "Form 1295, Letter of Intent for M/WBE subcontractors",
   "MFG for Registration": "Not specified",
   "Contract or Cooperative to use": "Not specified",
   "Model_no": "Not specified",
@@ -23,5 +23,5 @@
   },
   "company_name": "Dallas Independent School District",
   "Bid Summary": "The Dallas Independent School District is soliciting offers for student and staff computing devices, including laptops, desktops, tablet devices, and display monitors",
-  "Product Specification": "All equipment must be new and of the manufacturer's current model in production at the time of each order executed over the life of the contracts resulting from this RFP. Minimum specifications for student and staff devices include USB 3.1, white glove services, and warranty requirements."
+  "Product Specification": "All equipment must be new and of the manufacturer's current model in production at the time of each order executed over the life of the contracts resulting from this RFP. Minimum specifications for student and staff devices include: Tier 1 Small Student Chromebook Laptop (Touch), Tier 2 Large Student Chromebook Laptop (Non-Touch), Tier 3 Student Windows Laptop, Student Tablet, Tier 1 Staff Basic Desktop, Tier 2 Staff Professional Desktop, Display Monitor - Touch, Display Monitor - Non-Touch"
 }

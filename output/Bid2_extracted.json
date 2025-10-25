@@ -8,8 +8,8 @@
   "Installation": "Not specified",
   "Bid Bond Requirement": "Not specified",
   "Delivery Date": "Within 45 days of Award",
-  "Payment Terms": "Net 30 days",
-  "Any Additional Documentation Required": "Mercury Affidavit, Letter of Authorization (LOA) from the Manufacturer or Distributor",
+  "Payment Terms": "Invoice(s) shall be submitted within 10 days of delivering the equipment",
+  "Any Additional Documentation Required": "Mercury Affidavit, Proof of delivery including packing slip or delivery confirmation, and equipment serial numbers",
   "MFG for Registration": "Dell",
   "Contract or Cooperative to use": "Hardware Master Contract",
   "Model_no": "Latitude 5550, Thunderbolt 4 Dock \u2013 WD22TB4",
@@ -22,6 +22,6 @@
     "Address": "MD State Treasurer\u2019s Office, 80 Calvert Street, Room 109, Annapolis, MD 21401"
   },
   "company_name": "Dell",
-  "Bid Summary": "Purchase of Dell Laptops and Extended Warranty for MD529 employees",
+  "Bid Summary": "Purchase of Dell Laptops and Extended Warranty",
   "Product Specification": "Dell Latitude 5550 Laptops with Microsoft Copilot, Dell Thunderbolt 4 Dock \u2013 WD22TB4, 3 Years Extended Warranty"
 }
